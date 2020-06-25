@@ -2,22 +2,49 @@ import React from 'react';
 import {Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {Fumi} from 'react-native-textinput-effects';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import Mail from 'react-native-vector-icons/MaterialIcons';
 
-const Login = ({navigation}) => {
+const Register = ({navigation}) => {
   return (
     <View>
-      <View style={Style.viewImg}>
-        <Image style={Style.img} source={require('../../Assets/logo.png')} />
-        <Text style={Style.textTitle}>Galang Dana</Text>
-        <Text style={{color: '#BFC1C0'}}>Sign to continue </Text>
+      <View>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Login')}
+          style={Style.iconTop}>
+          <FontAwesome5 size={20} color="#3EA898" name="arrow-left" />
+        </TouchableOpacity>
+      </View>
+      <View style={Style.viewTextCR}>
+        <Text style={Style.textTitle}>Create Account</Text>
+        <Text style={{color: '#BFC1C0'}}>Create a new account </Text>
       </View>
       <View style={Style.viewMargin}>
+        <Fumi
+          style={Style.input}
+          label={'Name'}
+          iconClass={FontAwesome5}
+          iconName={'user'}
+          iconColor={'#3EA898'}
+          iconSize={20}
+          iconWidth={40}
+          inputPadding={16}
+        />
         <Fumi
           style={Style.input}
           label={'Email'}
           iconClass={Mail}
           iconName={'email'}
+          iconColor={'#3EA898'}
+          iconSize={20}
+          iconWidth={40}
+          inputPadding={16}
+        />
+        <Fumi
+          style={Style.input}
+          label={'Phone'}
+          iconClass={Ionicons}
+          iconName={'ios-phone-portrait'}
           iconColor={'#3EA898'}
           iconSize={20}
           iconWidth={40}
@@ -34,19 +61,18 @@ const Login = ({navigation}) => {
         />
       </View>
       <View style={Style.viewMargin}>
-        <Text style={Style.textFPW}>Forgot Password ?</Text>
         <View style={Style.viewBTN}>
           <TouchableOpacity style={Style.btn}>
-            <Text style={Style.btnFont}>Login</Text>
+            <Text style={Style.btnFont}>Create Account</Text>
           </TouchableOpacity>
         </View>
         <View style={Style.viewMargin2}>
           <Text style={Style.textRegis2}>
-            {"Don't have account?" + ' '}
+            {'Already have a account?' + ' '}
             <Text
-              onPress={() => navigation.navigate('Register')}
+              onPress={() => navigation.navigate('Login')}
               style={Style.textRegis}>
-              create a new account
+              Login
             </Text>
           </Text>
         </View>
@@ -55,11 +81,14 @@ const Login = ({navigation}) => {
   );
 };
 
-export default Login;
+export default Register;
 const Style = StyleSheet.create({
   img: {
     width: 150,
     height: 150,
+  },
+  iconTop: {
+    margin: '5%',
   },
   viewMargin: {
     margin: '10%',
@@ -71,9 +100,9 @@ const Style = StyleSheet.create({
     color: '#3EA898',
     fontSize: 35,
   },
-  viewImg: {
+  viewTextCR: {
     alignItems: 'center',
-    marginTop: '10%',
+    marginTop: '5%',
   },
   input: {
     marginBottom: '5%',
@@ -88,7 +117,7 @@ const Style = StyleSheet.create({
   },
   viewBTN: {
     alignItems: 'center',
-    marginTop: '10%',
+    marginTop: '-10%',
   },
   btn: {
     backgroundColor: '#3EA898',
